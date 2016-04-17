@@ -1,3 +1,4 @@
+package PateintDetailsAppend;
 
 import java.awt.EventQueue;
 
@@ -8,6 +9,8 @@ import javax.swing.JFrame;
 import javax.swing.JTextField;
 import java.awt.BorderLayout;
 import java.awt.Color;
+
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -181,7 +184,11 @@ public class GUITest {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
-				String PatientName;     //To Get The PAtient Name From The Text Box
+				//Initialise Array To Store The Patient Details
+				String[] PateintDetails = new String[100]; 
+				String     PatientAge;
+
+		/*		String PatientName;     //To Get The PAtient Name From The Text Box
 				String PatientAge;      //To Get The PAtient Age  From The Text Box
 				String PatientGender;   //To Get The Patient Gender Value Select n The Combo Box
 				String P_Option1;       //To Get The The Text Of The OPtion-1 
@@ -190,80 +197,87 @@ public class GUITest {
 				String P_Option4;       //To Get The The Text Of The OPtion-4 
 				String P_Option5;       //To Get The The Text Of The OPtion-5
 				String P_Option6;       //To Get The The Text Of The OPtion-6
+				*/ 
 				
-		// Get The Text Value From The Patient Name Field Provided On The Screen		
-                PatientName  = textField.getText();
+	
+				// Get The Text Value From The Patient Name Field Provided On The Screen		
+				PateintDetails[1]  = textField.getText();
 				 
 		// Get The Text Value From The Patient Age Field Provided On The Screen	
 				PatientAge   = textField_1.getText();
 			
 		// Get The Text of The Value Selected In The Combo Box Field Provided On The Screen	
-				PatientGender   = comboBox.getSelectedItem().toString();
+				PateintDetails[2]   = comboBox.getSelectedItem().toString();
 				
 		// Get The Text of The Value OPtion-1 Selected Only When It IS Selected
 				 boolean selected = chckbxNewCheckBox.isSelected();
 				    if (selected) {
-		             P_Option1 = chckbxNewCheckBox.getText();
+				    	PateintDetails[3] = chckbxNewCheckBox.getText();
 				    } else {
-				      P_Option1 = " ";
+				    	PateintDetails[3] = "NA";
 				    }
 		
 		// Get The Text of The Value OPtion-2 Selected Only When It IS Selected		    		
 				 selected = chckbxOption.isSelected();
 				    if (selected) {
-				    	P_Option2 = chckbxOption.getText();
+				    	PateintDetails[4] = chckbxOption.getText();
 				    } else {
-				    	P_Option2 = " ";
+				    	PateintDetails[4] = "NA";
 				    }
 
 		// Get The Text of The Value OPtion-3 Selected Only When It IS Selected	
 				 selected = chckbxOption_1.isSelected();
 				    if (selected) {
-				    	P_Option3 = chckbxOption_1.getText();
+				    	PateintDetails[5] = chckbxOption_1.getText();
 				    } else {
-				    	P_Option3 = " ";
+				    	PateintDetails[5] = "NA";
 				    }
 
 		// Get The Text of The Value OPtion-4 Selected Only When It IS Selected			
 				 selected = chckbxOption_2.isSelected();
 				    if (selected) {
-				    	P_Option4 = chckbxOption_2.getText();
+				    	PateintDetails[6] = chckbxOption_2.getText();
 				    } else {
-				    	P_Option4 = " ";
+				    	PateintDetails[6] = "NA";
 				    }
 
 		// Get The Text of The Value OPtion-5 Selected Only When It IS Selected
 				 selected = chckbxOption_3.isSelected();
 				    if (selected) {
-				    	P_Option5 = chckbxOption_3.getText();
+				    	PateintDetails[7] = chckbxOption_3.getText();
 				    } else {
-				    	P_Option5 = " ";
+				    	PateintDetails[7] = "NA";
 				    }
 
 		// Get The Text of The Value OPtion-6 Selected Only When It IS Selected
 				 selected = chckbxOption_4.isSelected();
 				    if (selected) {
-				    	P_Option6 = chckbxOption_4.getText();
+				    	PateintDetails[8] = chckbxOption_4.getText();
 				    	
 				    } else {
-				    	P_Option6 = " ";
+				    	PateintDetails[8] = "NA";
 				    }
 
 		
 		 // Call The Function "WriteExcel" To Append The Values In The Excel Sheet
 				    try {
-  						WriteExcel(PatientName, PatientAge,
-								 PatientGender,  P_Option1, P_Option2,
-								 P_Option3,  P_Option4,  P_Option5,  P_Option6);
+				    	@SuppressWarnings("unused")
+						PatientExcelAppend WrtDet = new PatientExcelAppend(PateintDetails, PatientAge);
+				    	//  WrtDet.PatientExcelAppend(PateintDetails[], PatientAge);
+						String s1= "Patient Details Appended         " ;	
+				    	JOptionPane.showMessageDialog(null, this,s1,JOptionPane.WARNING_MESSAGE);			
+				    
 					} catch (IOException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}	
+				    
 			}
-		});
-		
+		});		
 		btnNewButton.setBounds(73, 215, 89, 23);
 		frmPediperi.getContentPane().add(btnNewButton);
+
+		
 		
 	}
 
@@ -281,7 +295,7 @@ public class GUITest {
 		 *  @param    P_Option5     - Text Value Against The Check Box Option - 5 If Selected
 		 *  @param    P_Option6     - Text Value Against The Check Box Option - 6 If Selected
          */ 
-public void  WriteExcel(String PatientName, String PatientAge,String PatientGender,
+/*public void   WriteExcel(String PatientName, String PatientAge,String PatientGender,
 		 String P_Option1, String P_Option2,String P_Option3, String P_Option4,
 		 String P_Option5, String P_Option6) throws IOException 
 		{
@@ -340,5 +354,5 @@ public void  WriteExcel(String PatientName, String PatientAge,String PatientGend
 		wb.write(fileOut);
 		fileOut.flush();
 		fileOut.close();
-	}
+	}*/ 
 }
