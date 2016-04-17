@@ -1,7 +1,7 @@
 # Camera Application Interface
 
 Introduction
- ------------
+------------
 This project aims to develop a software application for accessing the USB Wired Cameras/ An Integrated WebCam.
 In brief this provides a window displaying the live feed of the camera selected and some control 
 components on the GUI. 
